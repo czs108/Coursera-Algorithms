@@ -8,10 +8,29 @@
  *
  ******************************************************************************/
 
-import java.util.Comparator;
 import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
+
+import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
+
+    private enum RelativePosition {
+        OVERLAPPING,
+        VERTICAL,
+        HORIZONTAL,
+        OTHER
+    }
+
+    private class SlopeComparator implements Comparator<Point> {
+
+        @Override
+        public int compare(Point o1, Point o2) {
+            double slope1 = slopeTo(o1);
+            double slope2 = slopeTo(o2);
+            return Double.compare(slope1, slope2);
+        }
+    }
 
     private final int x;     // x-coordinate of this point
     private final int y;     // y-coordinate of this point
@@ -23,6 +42,9 @@ public class Point implements Comparable<Point> {
      * @param  y the <em>y</em>-coordinate of the point
      */
     public Point(int x, int y) {
+        assert (0 <= x && x <= 32767);
+        assert (0 <= y && y <= 32767);
+
         /* DO NOT MODIFY */
         this.x = x;
         this.y = y;
@@ -59,7 +81,23 @@ public class Point implements Comparable<Point> {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
-        /* YOUR CODE HERE */
+        switch (getRelativePosition(that)) {
+            case OVERLAPPING: {
+                // the two points are equal
+                return Double.NEGATIVE_INFINITY;
+            }
+            case HORIZONTAL: {
+                // the line segment is horizontal
+                return 0;
+            }
+            case VERTICAL: {
+                // the line segment is vertical
+                return Double.POSITIVE_INFINITY;
+            }
+            default: {
+                return Double.valueOf(that.y - y) / (that.x - x);
+            }
+        }
     }
 
     /**
@@ -74,8 +112,15 @@ public class Point implements Comparable<Point> {
      *         point; and a positive integer if this point is greater than the
      *         argument point
      */
+    @Override
     public int compareTo(Point that) {
-        /* YOUR CODE HERE */
+        if (y < that.y) {
+            return -1;
+        } else if (y > that.y) {
+            return 1;
+        } else {
+            return Integer.compare(x, that.x);
+        }
     }
 
     /**
@@ -85,9 +130,8 @@ public class Point implements Comparable<Point> {
      * @return the Comparator that defines this ordering on points
      */
     public Comparator<Point> slopeOrder() {
-        /* YOUR CODE HERE */
+        return new SlopeComparator();
     }
-
 
     /**
      * Returns a string representation of this point.
@@ -101,10 +145,40 @@ public class Point implements Comparable<Point> {
         return "(" + x + ", " + y + ")";
     }
 
+    // get the relative position between two points
+    private RelativePosition getRelativePosition(Point that) {
+        assert (that != null);
+
+        if (this.compareTo(that) == 0) {
+            return RelativePosition.OVERLAPPING;
+        } else if (x == that.x) {
+            return RelativePosition.VERTICAL;
+        } else if (y == that.y) {
+            return RelativePosition.HORIZONTAL;
+        } else {
+            return RelativePosition.OTHER;
+        }
+    }
+
     /**
      * Unit tests the Point data type.
      */
     public static void main(String[] args) {
-        /* YOUR CODE HERE */
+        StdOut.println("[*] p1(0, 0)\n[*] p2(1, 1)\n[*] p3(2, 2)\n[*] p4(2, 1)\n[*] p5(4, 1)");
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(1, 1);
+        Point p3 = new Point(2, 2);
+        Point p4 = new Point(2, 1);
+        Point p5 = new Point(4, 1);
+
+        StdOut.println("[*] p1.compareTo(p1) is " + p1.compareTo(p2));
+        StdOut.println("[*] p2.compareTo(p1) is " + p2.compareTo(p1));
+        StdOut.println("[*] p1.compareTo(p1) is " + p1.compareTo(p1));
+
+        StdOut.println("[*] p1.slopeTo(p2) is " + p1.slopeTo(p2));
+        StdOut.println("[*] p1.slopeTo(p4) is " + p1.slopeTo(p4));
+        StdOut.println("[*] p1.slopeTo(p1) is " + p1.slopeTo(p1));
+        StdOut.println("[*] p3.slopeTo(p4) is " + p3.slopeTo(p4));
+        StdOut.println("[*] p2.slopeTo(p5) is " + p2.slopeTo(p5));
     }
 }
