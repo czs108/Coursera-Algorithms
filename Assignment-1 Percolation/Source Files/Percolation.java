@@ -162,21 +162,17 @@ public class Percolation {
         assert (isIndexValid(row, col));
 
         // check the left, right, up and down sites
-        Index[] neighbors = new Index[4];
-        if (col >= 2) {
-            neighbors[0] = new Index(row, col - 1);
-        }
+        Index[] neighbors = new Index[] {
+            new Index(row, col - 1),
+            new Index(row, col + 1),
+            new Index(row - 1, col),
+            new Index(row + 1, col)
+        };
 
-        if (col <= SIDE_LENGTH - 1) {
-            neighbors[1] = new Index(row, col + 1);
-        }
-
-        if (row >= 2) {
-            neighbors[2] = new Index(row - 1, col);
-        }
-
-        if (row <= SIDE_LENGTH - 1) {
-            neighbors[3] = new Index(row + 1, col);
+        for (int i = 0; i != neighbors.length; ++i) {
+            if (!isIndexValid(neighbors[i].row, neighbors[i].col)) {
+                neighbors[i] = null;
+            }
         }
 
         return neighbors;
