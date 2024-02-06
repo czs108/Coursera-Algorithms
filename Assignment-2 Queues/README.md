@@ -101,7 +101,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
 **Client.** Write a client program `Permutation.java` that takes an integer *k* as a command-line argument; reads a sequence of strings from standard input using `StdIn.readString()`; and prints exactly *k* of them, uniformly at random. Print each item from the sequence at most once.
 
-```powershell
+```console
 ~/Desktop/queues> cat distinct.txt
 A B C D E F G H I
 
@@ -116,7 +116,7 @@ F
 G
 ```
 
-```powershell
+```console
 ~/Desktop/queues> cat duplicates.txt
 AA BB BB BB BB BB CC CC
 

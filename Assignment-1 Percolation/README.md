@@ -121,7 +121,7 @@ The constructor should throw a `java.lang.IllegalArgumentException` if either *n
 
 Also, include a `main()` method that takes two *command-line arguments* *n* and *T*, performs *T* independent computational experiments (discussed above) on an *n*-by-*n* grid, and prints the sample mean, sample standard deviation, and the *95% confidence interval* for the percolation threshold. Use [`StdRandom`](https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/StdRandom.html) to generate random numbers; use [`StdStats`](https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/StdStats.html) to compute the sample mean and sample standard deviation.
 
-```powershell
+```console
 ~/Desktop/percolation> java-algs4 PercolationStats 200 100
 mean                    = 0.5929934999999997
 stddev                  = 0.00876990421552567

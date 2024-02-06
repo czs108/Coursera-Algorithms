@@ -18,7 +18,7 @@ The Burrows–Wheeler data compression algorithm consists of three algorithmic c
 
 **Binary input and binary output.** To enable your programs to work with binary data, use [`BinaryStdIn`](https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/BinaryStdIn.html) and [`BinaryStdOut`](https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/BinaryStdOut.html), which are described in *Algorithms, 4th edition*. You can use [`HexDump`](https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/HexDump.html), to display the binary output when debugging: it takes a command-line argument *n*; reads bytes from standard input; and writes them to standard output in hexadecimal, *n* per line.
 
-```powershell
+```console
 ~/Desktop/burrows> cat abra.txt
 ABRACADABRA!
 
@@ -31,13 +31,13 @@ Note that in ASCII, `'A'` is 41 (hex), `'B'` is 42 (hex), and `'!'` is 21 (hex).
 
 **Huffman compression and expansion.** [`Huffman`](https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/Huffman.html) (*Program 5.10* in *Algorithms, 4th edition*) implements the classic Huffman compression and expansion algorithms.
 
-```powershell
+```console
 ~/Desktop/burrows> java-algs4 edu.princeton.cs.algs4.Huffman - < abra.txt | java-algs4 edu.princeton.cs.algs4.HexDump 16
 50 4a 22 43 43 54 a8 40 00 00 01 8f 96 8f 94
 120 bits
 ```
 
-```powershell
+```console
 ~/Desktop/burrows> java-algs4 edu.princeton.cs.algs4.Huffman - < abra.txt | java-algs4 edu.princeton.cs.algs4.Huffman +
 ABRACADABRA!
 ```
@@ -68,7 +68,7 @@ If equal characters occur near one another other many times in the input, then m
 
 - *Move-to-front encoding.* Your task is to maintain an ordered sequence of the 256 extended ASCII characters. Initialize the sequence by making the *i*th character in the sequence equal to the *i*th extended ASCII character. Now, read each 8-bit character `c` from standard input, one at a time; output the 8-bit index in the sequence where `c` appears; and move `c` to the front.
 
-  ```powershell
+  ```console
   ~/Desktop/burrows> java-algs4 MoveToFront - < abra.txt | java-algs4 edu.princeton.cs.algs4.HexDump 16
   41 42 52 02 44 01 45 01 04 04 02 26
   96 bits
@@ -76,7 +76,7 @@ If equal characters occur near one another other many times in the input, then m
 
 - *Move-to-front decoding.* Initialize an ordered sequence of 256 characters, where extended ASCII character *i* appears *i*th in the sequence. Now, read each 8-bit character *i* (but treat it as an integer between 0 and 255) from standard input one at a time; write the *i*th character in the sequence; and move that character to the front. Check that the decoder recovers any encoded message.
 
-  ```powershell
+  ```console
   ~/Desktop/burrows> java-algs4 MoveToFront - < abra.txt | java-algs4 MoveToFront +
   ABRACADABRA!
   ```
@@ -178,7 +178,7 @@ public class CircularSuffixArray {
 
   Notice how there are 4 consecutive `A`s and 2 consecutive `B`s—these clusters make the message easier to compress.
 
-  ```powershell
+  ```console
   ~/Desktop/burrows> java-algs4 BurrowsWheeler - < abra.txt | java-algs4 edu.princeton.cs.algs4.HexDump 16
   00 00 00 03 41 52 44 21 52 43 41 41 41 41 42 42
   128 bits
@@ -236,7 +236,7 @@ public class CircularSuffixArray {
 
   Check that the inverse transform recovers any transformed message.
 
-  ```powershell
+  ```console
   ~/Desktop/burrows> java-algs4 BurrowsWheeler - < abra.txt | java-algs4 BurrowsWheeler +
   ABRACADABRA!
   ```

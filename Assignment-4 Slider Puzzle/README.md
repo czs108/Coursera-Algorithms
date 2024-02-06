@@ -142,7 +142,7 @@ public static void main(String[] args) {
 
 The input file contains the board size *n*, followed by the *n*-by-*n* grid of tiles, using 0 to designate the blank square.
 
-```powershell
+```console
 ~/Desktop/8puzzle> cat puzzle04.txt
 3
  0  1  3
@@ -177,7 +177,7 @@ Minimum number of moves = 4
  7  8  0
 ```
 
-```powershell
+```console
 ~/Desktop/8puzzle> cat puzzle3x3-unsolvable.txt
 3
  1  2  3

@@ -81,7 +81,7 @@ The last six methods should throw an `IllegalArgumentException` if one (or both)
 
 **Input format.** The input format is the number of teams in the division *n* followed by one line for each team. Each line contains the team name (with no internal whitespace characters), the number of wins, the number of losses, the number of remaining games, and the number of remaining games against each team in the division. For example, the input files [`teams4.txt`](https://coursera.cs.princeton.edu/algs4/assignments/baseball/files/teams4.txt) and [`teams5.txt`](https://coursera.cs.princeton.edu/algs4/assignments/baseball/files/teams5.txt) correspond to the two examples discussed above.
 
-```powershell
+```bash
 % cat teams4.txt
 4
 Atlanta       83 71  8  0 1 6 1
@@ -122,7 +122,7 @@ public static void main(String[] args) {
 
 Below is the desired output:
 
-```powershell
+```console
 % java-algs4 BaseballElimination teams4.txt
 Atlanta is not eliminated
 Philadelphia is eliminated by the subset R = { Atlanta New_York }

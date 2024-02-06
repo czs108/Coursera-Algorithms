@@ -116,7 +116,7 @@ public class BoggleBoard {
 
 - *Dictionaries.* A dictionary consists of a sequence of words, separated by whitespace, in alphabetical order. You can assume that each word contains only the uppercase letters `A` through `Z`. For example, here are the two files [`dictionary-algs4.txt`](https://coursera.cs.princeton.edu/algs4/assignments/boggle/files/dictionary-algs4.txt) and [`dictionary-yawl.txt`](https://coursera.cs.princeton.edu/algs4/assignments/boggle/files/dictionary-yawl.txt):
 
-  ```powershell
+  ```console
   ~/Desktop/boggle> cat dictionary-algs4.txt
   ABACUS
   ABANDON
@@ -142,7 +142,7 @@ public class BoggleBoard {
 
 - *Boggle boards.* A boggle board consists of two integers *m* and *n*, followed by the *m* × *n* characters in the board, with the integers and characters separated by whitespace. You can assume the integers are nonnegative and that the characters are uppercase letters `A` through `Z` (with the two-letter sequence `Qu` represented as either `Q` or `Qu`). For example, here are the files [`board4x4.txt`](https://coursera.cs.princeton.edu/algs4/assignments/boggle/files/board4x4.txt) and [`board-q.txt`](https://coursera.cs.princeton.edu/algs4/assignments/boggle/files/board-q.txt):
 
-  ```powershell
+  ```console
   ~/Desktop/boggle> cat board4x4.txt
   4 4
   A  T  E  E
@@ -177,7 +177,7 @@ public static void main(String[] args) {
 
 Here are two sample executions:
 
-```powershell
+```console
 ~/Desktop/boggle> java-algs4 BoggleSolver dictionary-algs4.txt board4x4.txt
 AID
 DIE

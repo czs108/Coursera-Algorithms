@@ -161,7 +161,7 @@ public static void main(String[] args) {
 
 **Input format.** We supply several sample input files (suitable for use with the test client above) in the following format: An integer *n*, followed by *n* pairs of integers (*x*, *y*), each between 0 and 32,767. Below are two examples.
 
-```powershell
+```console
 % cat input6.txt
 6
 19000  10000
@@ -175,7 +175,7 @@ public static void main(String[] args) {
 (14000, 10000) -> (32000, 10000) 
 ```
 
-```powershell
+```console
 % cat input8.txt
 8
 10000      0

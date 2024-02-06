@@ -124,7 +124,7 @@ public static void main(String[] args) {
 
 Here is a sample execution:
 
-```powershell
+```console
 % cat digraph1.txt
 13
 11
@@ -208,7 +208,7 @@ public static void main(String[] args) {
 
 Here is a sample execution:
 
-```powershell
+```console
 % cat outcast5.txt
 horse zebra cat bear table
 
